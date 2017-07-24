@@ -1,0 +1,11 @@
+exportPattern("^[[:alpha:]]+")
+
+export(getDistTimeIndicator)
+export(getDistanceIndicator)
+export(getTimeIndicator)
+export(getCO2Indicator)
+export(getActiveTransportIndicator)
+export(getWalkIndicator)
+export(getCyclingIndicator)
+export(getGraphIndicator)
+
