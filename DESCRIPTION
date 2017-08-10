@@ -2,9 +2,11 @@ Package: UADIIndicator
 Type: Package
 Title: UADI  Population Mobility   Indicators 
 Version: 1.1.0
+Depends: R (>= 2.15.0), RCurl, jsonlite
 Date: 2017-07-10
 Author: Guohun Zhu
 Maintainer: Guohun Zhu <guohun.zhu.phd@ieee.org>
-Description: There are five indicators for UADI Average Journey to work distance (by mode) Average Journey to work time (by mode) Average CO2 emissions (by mode)  ActiveTransportIndicator
+Description: This R package is used to access Urban Analytics Data Infrastructure (UADI) indicators http://uadi.project.uq.edu.au/.
+             There are five indicators for UADI:  Average Journey to work distance (by mode), Average Journey to work time (by mode), Average CO2 emissions (by car),  Active Transport Indicator (by bicycle and/or walk).   
 License: GPL
 Encoding: UTF-8

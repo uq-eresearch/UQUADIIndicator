@@ -1,4 +1,4 @@
-getGraphIndicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key){
+getGraphIndicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key="UQAPI"){
   require(RCurl)
   require(jsonlite)
 
@@ -11,7 +11,7 @@ getGraphIndicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key){
   # Output:
   #           pe:    permuation entropy
   #           hist:  the histogram for the order distribution
-  str=paste0("http://uadi.project.uq.edu.au/UADI/resources/getIndicators/origins?sacodetype=SA3", "&key=",key)
+  str=paste0("http://uadi.project.uq.edu.au/UADI/resources/carbon/origins?sacodetype=SA3", "&key=",key)
   str=paste0(str, "&region=",region)
   str=paste0(str, "&year=",year)
   str=paste0(str, "&feature=",travel_mod)
@@ -22,7 +22,7 @@ getGraphIndicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key){
   return(sa30501)
 }
 
-getCO2Indicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key){
+getCO2Indicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key="UQAPI"){
   require(RCurl)
   require(jsonlite)
 
@@ -35,11 +35,10 @@ getCO2Indicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key){
   # Output:
   #           pe:    permuation entropy
   #           hist:  the histogram for the order distribution
-  str=paste0("http://uadi.project.uq.edu.au/UADI/resources/getIndicators/origins?sacodetype=SA3", "&key=",key)
+  str=paste0("http://uadi.project.uq.edu.au/UADI/resources/carbon/origins?sacodetype=SA3", "&key=",key)
   str=paste0(str, "&region=",region)
   str=paste0(str, "&year=",year)
   str=paste0(str, "&feature=",travel_mod)
-
   req <- getURLContent(str)
   sa30501 <- fromJSON(req)
 

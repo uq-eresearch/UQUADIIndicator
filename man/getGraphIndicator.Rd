@@ -40,6 +40,6 @@ Guohun Zhu, Jonathan Corcoran, Paul Shyy, Salvatore Flavio Pilegg, Jane Hunter  
 }
 \examples{
 
-getDistTimeIndicator('SEQ', 2011,'Car',"your key")
+getDistTimeIndicator('SEQ', 2011,'Car')
 
 }

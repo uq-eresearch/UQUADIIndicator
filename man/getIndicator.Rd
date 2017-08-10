@@ -2,15 +2,16 @@
 \alias{getDistTimeIndicator}
 \title{get Distance and Time Indicator for UADI!}
 \usage{
-getDistTimeIndicator(region, year,travel_mod,key)
+getDistTimeIndicator(region, year,travel_mod,OD,sacodetype,key)
 }
 \arguments{
   \item{region}{input one of three Regions:  Sydney, Melbourne, or SEQ, default SEQ }
   \item{year }{ three cencus year:  2001, 2006  or 2011,  default 2011}
   \item{travel_mod}{ nine travel mode:  "Train", "Bus", "Ferry", "CarDriver","CarPassenger", "Bicycle", "Walk", "Taxi",
            "Truck", or  "Motorbike".   default: CarDriverr  }
+  \item{OD}{ "Original", or "Destination".   default: Original }
+  \item{sacodetype}{  "SA2", "SA3"   default: "SA3"" }
   \item{key } { This is the key your assigned by UQ eResearch group, please contact UQ eResearch group to obtian your key}
-
 }
 \value{
   \item{Region}
@@ -29,8 +30,16 @@ This is the Average distance of the journey from home to the work place by mode.
 It also  inlcudes Average time of the journey from home to the work place by mode.
 
 }
+
+\seealso{
+\code{\link{getActiveTransportIndicator}}
+\code{\link{getWalkIndicator}}
+\code{\link{getCO2Indicator}}
+}
+
+
 \examples{
 
-getDistTimeIndicator('SEQ', 2011,'Car',"your key")
+getDistTimeIndicator('SEQ', 2011,'Car')
 
 }

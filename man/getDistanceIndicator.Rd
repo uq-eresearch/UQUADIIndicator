@@ -31,6 +31,6 @@ It also  inlcudes Average time of the journey from home to the work place by mod
 }
 \examples{
 
-getDistTimeIndicator('SEQ', 2011,'Car',"your key")
+getDistTimeIndicator('SEQ', 2011,'Car')
 
 }

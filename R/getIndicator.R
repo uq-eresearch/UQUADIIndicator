@@ -1,6 +1,5 @@
 
-
-getDistTimeIndicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",key){
+getDistTimeIndicator<-function(region="SEQ", year=2011,travel_mode="CarDriver",key="UQAPI", direction="O", sacodetype="SA3"){
   require(RCurl)
   require(jsonlite)
 
@@ -13,18 +12,30 @@ getDistTimeIndicator<-function(region="SEQ", year=2011,travel_mod="CarDriver",ke
   # Output:
   #           pe:    permuation entropy
   #           hist:  the histogram for the order distribution
-   str=paste0("http://uadi.project.uq.edu.au/UADI/resources/getIndicators/origins?sacodetype=SA3", "&key=",key)
+  Str1<-"http://uadi.project.uq.edu.au/UADI/resources/getIndicators/";
+  str=""
+  if (direction=='O'){
+    str=paste0(Str1,"origins?", "key=",key)
+  }
+  else {
+    str=paste0(Str1,"destinations?", "key=",key)
+  }
+   str=paste0(str,"&sacodetype=", sacodetype)
+#   str=paste0("http://uadi.project.uq.edu.au/UADI/resources/getIndicators/origins?sacodetype=SA3", "&key=",key)
    str=paste0(str, "&region=",region)
    str=paste0(str, "&year=",year)
-   str=paste0(str, "&feature=",travel_mod)
-
+   str=paste0(str, "&feature=",travel_mode)
+#  cat(str)
   req <- getURLContent(str)
   sa30501 <- fromJSON(req)
 
   return(sa30501)
 }
 
-getDistanceIndicator<-function(region, year,travel_mod,key){
+getDistanceIndicator<-function(region="SEQ", year=2011,travel_mode="CarDriver",key="UQAPI", direction="O", sacodetype="SA3"){
+  require(RCurl)
+  require(jsonlite)
+
   #  Calculate the Indicator
 
   #  Input:   year: year;
@@ -34,16 +45,30 @@ getDistanceIndicator<-function(region, year,travel_mod,key){
   # Output:
   #           pe:    permuation entropy
   #           hist:  the histogram for the order distribution
+#  str=paste0("http://uadi.project.uq.edu.au/UADI/resources/getIndicators/origins?ret=D&sacodetype=SA3", "&key=",key)
+  Str1<-"http://uadi.project.uq.edu.au/UADI/resources/getIndicators/";
+  if (direction=='O'){
+    str=paste0(Str1,"origins?", "key=",key)
+  }
+  else {
+    str=paste0(Str1,"destinations?", "key=",key)
+  }
+  str=paste0(str,"&sacodetype=", sacodetype)
 
-  str="http://uadi.project.uq.edu.au/UADI/resources/getCities/origins?sacodetype=SA3&SA2Code=30501&year=2006&key=UQAPI"
-
+  str=paste0(str, "&region=",region)
+  str=paste0(str, "&year=",year)
+  str=paste0(str, "&feature=",travel_mode)
+  cat(str)
   req <- getURLContent(str)
   sa30501 <- fromJSON(req)
-  #sa30501$cityName
+
   return(sa30501)
 }
 
-getTimeIndicator<-function(region, year,travel_mod,key){
+getTimeIndicator<-function(region="SEQ", year=2011,travel_mode="CarDriver",key="UQAPI", direction="O", sacodetype="SA3"){
+  require(RCurl)
+  require(jsonlite)
+
   #  Calculate the Indicator
 
   #  Input:   year: year;
@@ -53,17 +78,27 @@ getTimeIndicator<-function(region, year,travel_mod,key){
   # Output:
   #           pe:    permuation entropy
   #           hist:  the histogram for the order distribution
+#  str=paste0("http://uadi.project.uq.edu.au/UADI/resources/getIndicators/origins?ret=T&sacodetype=SA3", "&key=",key)
+  Str1<-"http://uadi.project.uq.edu.au/UADI/resources/getIndicators/";
+  if (direction=='O'){
+    str=paste0(Str1,"origins?", "key=",key)
+  }
+  else {
+    str=paste0(Str1,"destinations?", "key=",key)
+  }
+  str=paste0(str,"&sacodetype=", sacodetype)
 
-  str="http://uadi.project.uq.edu.au/UADI/resources/getCities/origins?sacodetype=SA3&SA2Code=30501&year=2006&key=UQAPI"
-
+  str=paste0(str, "&region=",region)
+  str=paste0(str, "&year=",year)
+  str=paste0(str, "&feature=",travel_mode)
+  cat(str)
   req <- getURLContent(str)
   sa30501 <- fromJSON(req)
-  #sa30501$cityName
   return(sa30501)
 }
 
 
-getDestinationJsonbyFrom<-function(From=30501,  year=2011,key){
+getDestinationJsonbyFrom<-function(From=30501,  year=2011,travel_mode="CarDriver",key="UQAPI", direction="O", sacodetype="SA3"){
   require(RCurl)
   require(jsonlite)
 
@@ -77,7 +112,13 @@ getDestinationJsonbyFrom<-function(From=30501,  year=2011,key){
   #           pe:    permuation entropy
   #           hist:  the histogram for the order distribution
 
-  str=paste0("http://uadi.project.uq.edu.au/UADI/resources/getCities/origins?sacodetype=SA3", "&key=",key)
+  str1=paste0("http://uadi.project.uq.edu.au/UADI/resources/getCities/");
+  if (direction=='O'){
+    str=paste0(Str1,"origins?", "key=",key)
+  }
+  else {
+    str=paste0(Str1,"destinations?", "key=",key)
+  }
   str=paste0(str, "&SA2Code=",From)
   str=paste0(str, "&year=",year)
 
